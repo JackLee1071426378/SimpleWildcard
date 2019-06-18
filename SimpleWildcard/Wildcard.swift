@@ -126,7 +126,7 @@ class Wildcard
             var isSame = false
             if cmdStr.count != str.count
             {
-                //print("\"\(cmdStr)\" <with> \"\(str)\" Compared! -> \(isSame)")
+                print("\"\(cmdStr)\" <with> \"\(str)\" Compared! -> \(isSame)")
                 return false
             }
             isSame = true
@@ -135,7 +135,7 @@ class Wildcard
                 isSame = isTheSame(cmdChar: Character(cmdStr.sub(startIndex: i, length: 1)), targetChar: Character(str.sub(startIndex: i, length: 1)))
                 if !isSame { break }
             }
-            //print("\"\(cmdStr)\" <with> \"\(str)\" Compared! -> \(isSame)")
+            print("\"\(cmdStr)\" <with> \"\(str)\" Compared! -> \(isSame)")
             return isSame
         }
         
@@ -153,7 +153,7 @@ class Wildcard
                     }
                 }
             }
-            //print("-----------------------\nOrgin fragments = \(fragments)")
+            print("-----------------------\nOrgin fragments = \(fragments)")
             // fragments.count must >= 2
             
             let prefix = fragments[0]
@@ -168,8 +168,7 @@ class Wildcard
                 fragments.remove(at: fragments.count - 1)
             } else
             {
-                //print("Abort - Suffix wrong!")
-                // Wrong!
+                print("Abort - Suffix wrong!")
                 return false
             }
             // Judge whether the prefix is the same
@@ -181,12 +180,11 @@ class Wildcard
                 fragments.remove(at: 0)
             } else
             {
-                //print("Abort - Prefix wrong!")
-                // Wrong!
+                print("Abort - Prefix wrong!")
                 return false
             }
-            //print("Cut   fragments = \(fragments)")
-            //print("Cut   str = \(String.init(repeating: " ", count: prefix.count))\"\(str)\"\nOrgin str = \"\(str_o)\"")
+            print("Cut   fragments = \(fragments)")
+            print("Cut   str = \(String.init(repeating: " ", count: prefix.count))\"\(str)\"\nOrgin str = \"\(name)\"")
             let index = 0
             var startIndex = 0
             var endIndex = 0
@@ -209,15 +207,15 @@ class Wildcard
             }
             if fragments.count == 0
             {
+                print("\"\(name)\" Added!")
                 return true
-                //print("\"\(str_o)\" Added!")
             }
         } else
         {
             if compare(cmdStr: cmdStr, str: name)
             {
+                print("\"\(name)\" Added!")
                 return true
-                //print("\"\(str_o)\" Added!")
             }
         }
         return false
